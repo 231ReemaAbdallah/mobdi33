@@ -168,7 +168,7 @@
   
   
   body, html {
-  height: 1300px;
+  height: 2300px;
   margin: 0;
   font-size: 16px;
   /* font-family: "Lato", sans-serif; */
@@ -768,6 +768,6 @@
         }
       }
     
-      html{
+      /* html{
           height: 2300px;
-      }
+      } */
