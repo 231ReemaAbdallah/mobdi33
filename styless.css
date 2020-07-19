@@ -4,7 +4,6 @@
   }
   
   html,body{
-    height: 100%;
   margin: 0;
   background: #f2f2f2;
   
@@ -769,3 +768,6 @@
         }
       }
     
+      html{
+          height: 2300px;
+      }
