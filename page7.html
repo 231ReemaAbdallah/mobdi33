@@ -1,0 +1,325 @@
+<!-- game1 -->
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <!-- العنوان وصوره الصفحة -->
+  <title> مبدع|استمتع معنا  </title>
+  <link rel="icon" href="./images/IMG-8032.PNG" type="image/gif" sizes="16x16">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+<!-- برامج التواصل الإحتماعي و -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  <!-- لتنسيق الموقع css ملف  -->
+  <!-- <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style3.css"> -->
+  <link rel="stylesheet" href="style6.css">
+  <!-- الخطوط -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@800&family=Tajawal:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- الرأس -->
+   
+         
+<h2 style="color:#640064 ; font-family: sans-serif; margin-right: 20px; font-size: 30px;text-align: center;">لعبة الأذكياء </h2>
+<div id="game_canvas"></div>
+<div class="btnreema">
+<a href="home2.html" class="button">الرجوع الى الصفحة الرئيسية</a>
+<br>
+<a href="page6.html" class="button"> استمتع معنا  </a>
+</div>
+
+
+
+
+
+
+
+<script>
+    // game1
+function MemoryGame(boardSize) {
+  this.boardSize = boardSize || 12;
+  
+  this.validateBoardSize();
+  
+  this.canvas = document.getElementById('game_canvas');
+  this.boardReady = false;
+  this.gameBoardElement = null;
+  this.score = 100;
+  
+  this.scoreBoardReady = false;
+  this.scoreBoard = null;
+  this.scoreTextElement = null;
+  this.inResetMode = false;
+  
+  this.resetRuntimeProperties();
+  
+  this.start();
+}
+
+MemoryGame.prototype.helpers = {
+  shuffleArray: function(array) {
+    let currentIndex = array.length, 
+        temporaryValue,
+        randomIndex;
+
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  }
+}
+
+MemoryGame.prototype.resetRuntimeProperties = function() {
+  this.randomNumbers = [];
+  this.cardElements = [];
+  
+  this.closeTimer = null;
+  this.shownCards = [];
+  this.selectedCardCloneIndex = null;
+  this.selectedCardIndex = null;
+  this.matcheClock = null;
+  this.foundMatches = [];
+}
+
+MemoryGame.prototype.init = function() {
+  if(! this.scoreBoardReady) {
+    this.createScoreBoard();
+  }
+  
+  this.createGameBoard();
+  
+}
+
+MemoryGame.prototype.createScoreBoard = function() {
+  let resetButton;
+  
+  this.scoreTextElement = document.createElement('span');
+  this.scoreTextElement.classList.add('score-board-text');
+  this.scoreBoard = document.createElement('div');
+  this.scoreBoard.classList.add('score-board');
+  this.scoreBoard.appendChild(this.scoreTextElement);
+  
+  resetButton = document.createElement('button');
+  resetButton.innerHTML = "Reset";
+  resetButton.addEventListener('click', this.resetBoard.bind(this));
+  this.scoreBoard.appendChild(resetButton);
+  
+  this.canvas.appendChild(this.scoreBoard);
+  this.resetScore();
+  this.scoreBoardReady = true;
+}
+
+MemoryGame.prototype.updateScore = function() {
+  this.scoreTextElement.innerHTML = "Your Score: <span>" + this.score + "</span>";
+}
+
+MemoryGame.prototype.resetScore = function() {
+  this.score = 100;
+  this.updateScore();
+}
+
+MemoryGame.prototype.increaseScore = function(by) {
+  by = by || 1;
+  this.score = this.score + by;
+  this.updateScore();
+}
+
+MemoryGame.prototype.decreaseScore = function(by) {
+  by = by || 1;
+  this.score = this.score - by;
+  this.updateScore();
+}
+
+MemoryGame.prototype.resetBoard = function() {
+  if(this.inResetMode) {
+    return;
+  }
+  
+  this.inResetMode = true;
+  this.resetScore();
+  
+  if(this.closeTimer) {
+    clearTimeout(this.closeTimer);
+  }
+  
+  if(this.matcheClock) {
+    clearTimeout(this.matcheClock);
+  }
+  
+  for(let i = 0; i < this.cardElements.length; i++) {
+    card = this.cardElements[i];
+    card.classList.add('hide');
+  }
+  
+  setTimeout(function() {
+    this.gameBoardElement.innerHTML = "";
+    this.resetRuntimeProperties();
+    this.createGameCards();
+    this.inResetMode = false;
+  }.bind(this), 501);
+}
+
+MemoryGame.prototype.validateBoardSize = function() {
+  if(this.boardSize % 2 !== 0) {
+    throw new Error('The board size must be divided by 2');
+  }
+}
+
+MemoryGame.prototype.createRandomNumbers = function() {
+  let numberOfRandomNumbers = this.boardSize / 2;
+  this.randomNumbers = [];
+  
+  for (let i = 0; i < numberOfRandomNumbers; i++) {
+    this.randomNumbers.push(this.getRandomNumber());
+  }
+  
+}
+
+MemoryGame.prototype.getRandomNumber = function() {
+  let random = Math.floor((Math.random() * 99) + 1);
+  
+  return this.randomNumbers.indexOf(random) == -1 ? random : this.getRandomNumber();
+}
+
+MemoryGame.prototype.createCard = function(cardIndex, cloneIndex) {
+  let card = document.createElement('div');
+  card.classList.add('card', 'card-'+ cardIndex +'-' + cloneIndex, 'hide');
+  card.innerHTML = "<div><span>"+ this.randomNumbers[cardIndex] +"</span></div>";
+  card.addEventListener('click', function(e) {
+    this.onCardClicked(e, card, cardIndex, cloneIndex);
+  }.bind(this));
+  this.cardElements.push(card);
+}
+
+MemoryGame.prototype.createGameCards = function() {
+  let card;
+  this.createRandomNumbers();
+  
+  for(let i = 0; i < this.randomNumbers.length; i++) {
+    for(let cloneIndex = 0; cloneIndex < 2; cloneIndex++) {
+      this.createCard(i, cloneIndex);
+    }
+  }
+  
+  this.helpers.shuffleArray(this.cardElements);
+  
+  for(let elementIndex = 0; elementIndex < this.cardElements.length; elementIndex++) {
+    this.gameBoardElement.appendChild(this.cardElements[elementIndex]);
+  }
+
+}
+
+MemoryGame.prototype.createGameBoard = function() {
+  this.gameBoardElement = document.createElement('div');
+  this.gameBoardElement.classList.add('main-gmae-board');
+  this.canvas.appendChild(this.gameBoardElement);
+}
+
+MemoryGame.prototype.start = function() {
+  if(! this.boardReady) {
+    this.init();
+  }
+  
+  this.createGameCards();
+  
+}
+
+MemoryGame.prototype.resetSelected = function() {
+  let card;
+    
+  for(let i = 0; i < this.shownCards.length; i++) {
+    card = this.shownCards[i];
+    card.classList.add('hide');
+  }
+  
+  this.decreaseScore(2);
+  this.emptySelected();
+}
+
+MemoryGame.prototype.emptySelected = function() {
+  this.selectedCardCloneIndex = null;
+  this.selectedCardIndex = null;
+  this.shownCards = [];
+}
+
+MemoryGame.prototype.markMatched = function() {
+  for(let i = 0; i < this.shownCards.length; i++) {
+    card = this.shownCards[i];
+    card.classList.remove('hide');
+    card.classList.add('match');
+  }
+  
+  this.increaseScore();
+  this.emptySelected();
+}
+
+MemoryGame.prototype.onCardClicked = function(e, card, cardIndex, cloneIndex) {
+  let isMatch = false;
+  
+  if(this.closeTimer) {
+    clearTimeout(this.closeTimer);
+    this.resetSelected();
+    
+    this.closeTimer = null;
+  }
+  
+  if(this.matcheClock) {
+    clearTimeout(this.matcheClock);
+    this.markMatched();
+    
+    this.matcheClock = null;
+  }
+  
+  if(
+    (this.selectedCardCloneIndex == cloneIndex && this.selectedCardIndex == cardIndex) || 
+    this.foundMatches.indexOf(cardIndex) != -1 ||
+    this.inResetMode
+  ) {
+    
+    return;
+  }
+  
+  this.shownCards.push(card);
+  
+  if(this.selectedCardIndex === cardIndex) {
+    this.foundMatches.push(cardIndex);
+    isMatch = true;
+    
+    this.matcheClock = setTimeout(function() {
+      this.markMatched();
+      
+      this.matcheClock = null;
+    }.bind(this), 400);
+  }
+  
+  if(this.shownCards.length >= 2 && ! isMatch) {
+    this.closeTimer = setTimeout(function() {
+      this.resetSelected();
+      this.closeTimer = null;
+    }.bind(this), 1100);
+  }
+  
+  this.selectedCardCloneIndex = cloneIndex;
+  this.selectedCardIndex = cardIndex;
+  card.classList.remove('hide');
+}
+
+new MemoryGame();
+
+</script>
+
+<script src="./js/script.js"></script>
+</body>
+</html>

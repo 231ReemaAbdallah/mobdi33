@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> مبدع|استمتع معنا  </title>
+    <link rel="icon" href="./images/IMG-8032.PNG" type="image/gif" sizes="16x16">
+  
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="game3.css">
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>لعبة الذاكرة </h1>
+        </header>
+
+        <section class="score-panel">
+        	<ul class="stars">
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        	</ul>
+
+        	<span class="moves">0</span> التحركات
+
+          <div id="timer">00:00:00</div>
+
+            <div class="restart">
+              <button type="button" class="btn btn-info btn-sm">
+        		<i class="fa fa-repeat"></i>
+            </button>
+        	</div>
+        </section>
+
+        <ul class="deck">
+            <li class="card">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-cube"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-cube"></i>
+            </li>
+        </ul>
+    </div>
+    <div class="winPage closed">
+  <h1> !تهانينا</h1>
+  <p>    لقد أنهيت اللعبة بـ   
+    <span class="movesCount"> 0 </span>حركات  <span class="starsCount"> 0 </span>و نجوم</p>
+  <p>وقتك: <span class="finalTime"></span></p>
+  <p> هل تريد اللعب من جديد؟</p>
+  <button type="button" role="button" class="playAgain btn btn-info">إعادة اللعبة!</button>
+</div>
+</div>
+<a href="home2.html" class="button"> الرجوع الى الصفحة الرئيسية</a>
+
+<script>
+    let card1 = ''; 
+let card2 = ''; 
+let card1Parent = '';
+let card2Parent = '';
+let ready = true;
+let stopTimer = false;
+let cardCounter = 0;
+
+document.querySelector(".restart").addEventListener("click", restart);
+document.querySelector(".deck").addEventListener("click", function() {stopTimer = false; timerStart()});
+document.querySelector(".deck").addEventListener("click", cardOpen);
+document.querySelector(".playAgain").addEventListener("click", function() {
+  document.querySelector(".winPage").className = "winPage closed"; restart()});
+
+// Unlocking clicked cards and comparing them
+
+function cardOpen(evt) {
+  if (evt.target.className == "card" && cardCounter != 2) {
+	    evt.target.className += " open show";
+
+    // Determines which card comes first in a unlocked pair of cards
+
+    if (card1 == false) {
+      card1 = evt.target.firstElementChild.className;
+      card1Parent = evt.target;
+      cardCounter = 1;
+    } else {
+
+      // Increasing the amount of moves
+
+      document.querySelector(".moves").innerText = +document.querySelector(".moves").innerText + 1;
+
+      // Rating system. Stars decrease depending on how many moves you've made
+
+      if (document.querySelector(".moves").innerText == '16' || document.querySelector(".moves").innerText == '22') {
+        document.querySelector(".fa-star").parentNode.removeChild(document.querySelector(".fa-star"));
+      }
+
+      card2 = evt.target.firstElementChild.className;
+      card2Parent = evt.target;
+      cardCounter = 2;
+
+      // Card matching
+
+      if (card1 == card2) {
+        card1Parent.className = "card open show match";
+        card2Parent.className = "card open show match";
+        card1 = '';
+        card2 = '';
+        cardCounter = 0;
+        win();
+      } else {
+        setTimeout(function () {
+          evt.target.className = "card close"; card1Parent.className = "card close"}, 700);
+        setTimeout(function () {
+          evt.target.className = "card"; card1Parent.className = "card"; card1 = ''; card2 = ''; cardCounter = 0}, 900);
+      }
+    }
+
+    ready = false;
+
+  }
+}
+
+
+function returnStars() {
+  while (document.getElementsByClassName("fa-star").length != 3) {
+    var newStar = document.createElement("li");
+    newStar.className = "fa fa-star";
+    document.querySelector(".stars").appendChild(newStar);
+  }
+}
+
+
+function restart() {
+  card1 = "";
+  card2 = "";
+	document.querySelector(".moves").innerText = "0";
+	returnStars();
+  document.querySelector(".winPage").className = "winPage closed";
+
+	let cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+	cards = shuffle(cards);
+	const deck = document.querySelector(".deck");
+
+	for (let i = 0; i < cards.length; i++) {
+		deck.appendChild(cards[i]);
+		cards[i].className = "card";
+	}
+
+	ready = true;
+  stopTimer = true;
+
+ }
+
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+// هذا التايمر
+
+function timerStart() {
+	if (ready == true) {
+		var timer = 0;
+		var hour = 0;
+		var minute = 0;
+		var second = 0;
+		window.setInterval (function() {
+		  ++timer;
+		  hour = Math.floor(timer / 3600);
+		  minute = Math.floor((timer - hour * 3600) / 60);
+		  second = timer - hour * 3600 - minute * 60;
+		  if (hour < 10) hour = '0' + hour;
+		  if (minute < 10) minute = '0' + minute;
+		  if (second < 10) second = '0' + second;
+		  document.querySelector('#timer').innerHTML = hour + ':' + minute + ':' + second;
+		  if(stopTimer) {
+			document.querySelector('#timer').innerHTML = "00:00:00";
+			timer = 0;
+			hour = 0;
+			minute = 0;
+			second = 0;
+			return;
+		  }
+		}, 1000);
+	}
+}
+
+// هذا اذا فاز احد  يظهر صندوق
+
+function win() {
+ document.querySelector(".movesCount").innerText = document.querySelector(".moves").innerText;
+ document.querySelector(".starsCount").innerText = document.getElementsByClassName("fa-star").length;
+ document.querySelector(".finalTime").innerText = document.querySelector('#timer').innerHTML;
+
+ //هذا حق راح ياخذ قيمة المتغير ويعوض مكانها ويرد كل شيء نفس ما كان:
+
+ let matchingCards = document.getElementsByClassName('card match open show');
+ if (matchingCards.length == 16) {
+   setTimeout (function() {document.querySelector(".winPage").className = "winPage"}, 1000);
+   stopTimer = true;
+ }
+}
+
+</script>
+<script src="./js/script.js"></script>
+</body>
+</html>

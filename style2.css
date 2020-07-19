@@ -1,0 +1,773 @@
+/* الصفحة الرئيسية */
+* {
+  box-sizing: border-box;
+}
+
+html,body{
+  height: 100%;
+margin: 0;
+background: #f2f2f2;
+
+}
+
+/* الرأس */
+ .header {
+background: white;
+text-align: right;
+background: url(kuwait-city-city-header-1.png) center/cover no-repeat;
+height: 200px;
+/* font-family: 'Almarai', sans-serif; */
+  /* font-family: 'Tajawal', sans-serif; */
+/* font-family: "Lato", sans-serif; */
+
+} 
+
+/* التذييل */
+ .footer {
+  background-color:#1d3557;
+  text-align: center;
+  margin-top: 1px
+  }
+/* الناف بار */
+.topnav {
+  overflow: hidden;
+  background-color:#1d3557;
+  padding: 0;
+      font-family: 'Tajawal', sans-serif;
+
+  } 
+  
+  /*    هاذي مالت الناف بار داخلها القوائم */
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    position: -webkit-sticky;/* Safari */
+    position: sticky;
+    text-align: center;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+  }
+  /* عند التمرير */
+  li a:hover {
+    background-color: #457b9d;
+  }
+  
+
+  .topnav a {
+    float: left;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  } 
+  
+   .topnav a:hover {
+    background-color: #457b9d;
+    color: white;
+  } 
+
+* {box-sizing: border-box}
+/* body {font-family: Verdana, sans-serif; margin:0} */
+.mySlides {display: none}
+img {vertical-align: middle;}
+/* هاذي مالت كلمة مبدع الي بالرأس */
+header h1 {
+font-family: 'Almarai', sans-serif;
+
+color: rgb(0, 0, 0);
+padding: 30px;
+position: absolute;
+top: 4px; 
+text-align: center;
+right: 44%;
+text-align: center;
+top: 20px;
+overflow: hidden;
+/* font-family: 'Almarai', sans-serif; */
+/* font-family: 'Almarai', sans-serif; */
+/* font-family: 'Tajawal', sans-serif; */
+color: rgb(0, 0, 0);
+font-size:40px;
+
+}
+
+/* .fixed-header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%; 
+} */
+
+/* هاذي مالت شعار الموقع  الي بالرأس */
+/* .header-banner{
+font-family: 'Almarai', sans-serif;
+} */
+header h3 {
+font-family: 'Almarai', sans-serif;
+color: rgb(0, 0, 0);
+padding: 30px;
+position: absolute;
+top: 20px; 
+text-align: center;
+right: 36rem;
+text-align: center;
+top: 80px;
+overflow: hidden;
+/* font-family: 'Amiri', serif; */
+/* font-family: 'Tajawal', sans-serif; */
+color: rgb(0, 0, 128);
+font-size:40px;
+}
+
+
+/* التواصل الاجتماعي */
+.fa {
+padding: 20px;
+font-size: 30px;
+text-align: center;
+text-decoration: none;
+margin: 5px 2px;
+border-radius: 77%;
+}
+/* عند التمرير على الايقونه مالت برامج التواصل */
+.fa:hover {
+  opacity: 0.7;
+}
+/* فيسبوك */
+.fa-facebook {
+background: #3B5998;
+color: white;
+}
+/* توتير */
+.fa-twitter {
+background: #55ACEE;
+color: white;
+}
+/* يوتيوب */
+.fa-youtube {
+background: #bb0000;
+color: white;
+}
+/* انستا */
+.fa-instagram {
+background: #125688;
+color: white;
+}
+
+
+body, html {
+height: 1300px;
+margin: 0;
+font-size: 16px;
+/* font-family: "Lato", sans-serif; */
+font-weight: 400;
+line-height: 1.8em;
+color: #666;
+/* font-family: 'Tajawal', sans-serif; */
+background: #f2f2f2;
+
+}
+
+/* Parallax */
+.pimg1{
+position: relative;
+background-position: center;
+/* background-size: cover; */
+/* background-size: initial; */
+background-repeat: no-repeat;
+/* background-attachment: fixed; */
+background-size: contain;
+}
+.pimg2, .pimg3, .pimg4 {
+position: relative;
+background-position: center;
+background-size: contain;
+background-size: initial;
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+/* الصورة الاولى */
+
+.pimg1 {
+background-image: url(Forecasting-skills-1.png) ;
+min-height: 500px;
+}
+
+/* الصورة الثانيه */
+
+.pimg2 {
+background-image: url(./images/09.jpg);
+background-size: contain;
+/* width: 9900px; */
+min-height: 350px;
+background-size: contain;
+}
+
+/* الصورة الثالثه */
+
+.pimg3 {
+background-image: url(./images/jan2018_core_skills_you_should_look_for_in_your_next_candidate_940x352.jpg);
+min-height: 400px;
+}
+/* الصورة الرابعه */
+
+.pimg4 {
+background-image: url(./images/Skills-to-Boost-Your-Product-Sales-in-2018-1280x720.jpg);
+min-height: 400px;
+}
+
+/* هاذي مالت بارلكس المستطيلات الي  انا كاتبه عليهم وحاطه ايكون */
+.section {
+text-align: center;
+padding: 50px 80px;
+}
+
+.section-light {
+background-color: #a8dadc;
+}
+
+.section-dark {
+background-color: #b497c1f3;
+}
+.section-dark1 {
+background-color: #a8dadc;
+}
+.section-dark2 {
+background-color: #b497c1f3;
+}
+/* هاذي الكلام الي داخل المستطيلات */
+.ptext {
+position: absolute;
+top: 50%;
+width: 100%;
+text-align: center;
+color: #000;
+font-size: 27px;
+letter-spacing: 8px;
+text-transform: uppercase;
+}
+
+.ptext .border {
+background-color: #111;
+color: #fff;
+padding: 20px;
+}
+
+.ptext .border.trans {
+background-color:transparent;
+}
+
+@media (max-width:568px){
+.pimg1, .pimg2, .pimg3 {
+  background-attachment: scroll;
+}
+}
+/* هذا انا سويت كلاس حق  نوع الخط واللون وإلخ */
+.name{
+  font-family: 'Tajawal', sans-serif;
+color: #000;
+font-size: 50px;
+/* padding-top: 20px; */
+}
+/* هذا راح اغيره ريما لاتنسين! */
+.name1{
+  font-family: 'Tajawal', sans-serif;
+color: rgb(0, 0, 0);
+font-size: 30px;
+/* padding-top: 20px; */
+}
+
+/* هذا حق الي تحت  نفس الناف بار تحت عشان الزائر ما يصعد فوق ويتنقل بين الصفحات */
+.navbar {
+overflow: hidden;
+background-color:#1d3557;
+font-family: 'Tajawal', sans-serif;
+
+position: fixed;
+bottom: 0;
+width: 100%;
+/* font-family: 'Tajawal', sans-serif; */
+
+}
+
+.navbar a {
+  
+float: right;
+display: block;
+color: #ffffff;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+/* عند التمرير */
+.navbar a:hover {
+background: #457b9d;
+color: rgb(255, 255, 255);
+}
+
+
+/* المساعدة */
+
+body{
+direction:rtl;
+text-align:right
+}
+
+/* هذا عشان اللينك ما يطلع تحته خط رابط يكون نص عادي */
+
+a:link{
+text-decoration:none;
+}
+
+
+a:visited{
+text-decoration:none;
+}
+
+a:hover{
+text-decoration:none;
+}
+/* الجات */
+
+#whatsapp-chat{
+font-family:tajawal;
+position:fixed;
+background:#fff;
+width:350px;
+border-radius:10px;
+box-shadow:0 1px 15px rgba(32,33,36,.28);
+bottom:90px;
+left:30px;
+overflow:hidden;
+z-index:99;
+animation-name:showchat;
+animation-duration:1s;
+transform:scale(1)
+}
+/* هذا مال الصنندوق */
+
+a.blantershow-chat{
+background:linear-gradient(to left top,#6f96f3,#164ed2);
+color:#fff;
+position:fixed;
+z-index:98;
+bottom:25px;
+left:30px;
+font-size:15px;
+padding:10px 20px;
+border-radius:30px;
+box-shadow:0 1px 15px rgba(32,33,36,.28)
+}
+
+a.blantershow-chat i{
+transform:scale(1.2);
+margin:0 0 0 10px
+}
+
+
+.header-chat{
+background:linear-gradient(to left top,#6f96f3,#164ed2);
+color:#fff;
+padding:20px
+}
+
+.header-chat h3{
+margin:0 0 10px
+}
+
+
+.header-chat p{
+font-size:14px;
+line-height:1.7;
+margin:0
+}
+
+/*  هذا الي  كاتبه فيه اتصل */
+
+.info-avatar{
+position:relative
+}
+
+.info-avatar img{
+border-radius:100%;
+width:50px;
+float:right;
+margin:0 0 0 10px
+}
+
+
+.info-avatar:before{
+content:'\f232';
+z-index:1;
+font-fmily:"Font Awesome 5 Brands";
+background:#23ab23;
+color:#fff;
+padding:4px 5px;
+border-radius:100%;
+position:absolute;
+top:30px;
+right:30px
+}
+
+
+a.informasi{
+padding:20px;
+display:block;
+overflow:hidden;
+animation-name:showhide;
+animation-duration:2.5s
+}
+
+
+a.informasi:hover{
+background:#f1f1f1
+}
+
+
+.info-chat span{
+display:block
+}
+
+#get-label,span.chat-label{
+font-size:12px;
+color:#888
+}
+#get-nama,span.chat-nama{
+margin:5px 0 0;
+font-size:15px;
+font-weight:700;
+color:#222}
+
+
+#get-label,#get-nama{
+color:#fff
+}
+
+span.my-number{
+display:none
+}
+
+
+.blanter-msg{
+color:#444;
+padding:20px;
+font-size:12.5px;
+text-align:center;
+border-top:1px solid #ddd
+}
+
+
+textarea#chat-input{
+border:none;
+font-family:'Arial',sans-serif;
+width:100%;
+height:20px;
+outline:none;
+resize:none
+}
+
+a#send-it{
+color:#555;
+width:40px;
+margin:-5px 5px 0 0;
+font-weight:700;
+padding:8px;
+background:#eee;
+border-radius:10px
+}
+
+
+.first-msg{
+background:#f5f5f5;
+padding:30px;
+text-align:center
+}
+
+
+.first-msg span{
+background:#e2e2e2;
+color:#333;
+font-size:14.2px;
+line-height:1.7;
+border-radius:10px;
+padding:15px 20px;
+display:inline-block
+}
+
+
+.start-chat .blanter-msg{
+display:flex
+}
+
+#get-number{
+display:none
+}
+
+a.close-chat{
+position:absolute;
+top:5px;
+left:15px;
+color:#fff;
+font-size:30px
+}
+
+@keyframes showhide{
+from{transform:scale(.5);opacity:0}}
+@keyframes showchat{from{transform:scale(0);opacity:0}}
+@media screen and (max-width:480px){#whatsapp-chat{width:auto;right:5%;left:5%;font-size:80%}}
+
+
+.hide{
+display:none;
+animation-name:showhide;
+animation-duration:1.5s;
+transform:scale(1);
+opacity:1}
+
+.show{
+display:block;
+animation-name:showhide;
+animation-duration:1.5s;
+transform:scale(1);
+opacity:1}
+
+
+
+/* الصور */
+div.gallery {
+    border: 1px solid #ccc;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+    font-family: 'Tajawal', sans-serif;
+
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 100%;
+    }
+  }
+  
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  /* الابداع والابتكار والموهبه */
+  /* div.gallery1 {
+    border: 1px solid #ccc;
+  }
+  
+  div.gallery1:hover {
+    border: 1px solid #777;
+  } */
+  
+  div.gallery1 img {
+    width: 90%;
+    height: auto;
+    padding-top: 70px;
+    display: inline-block;
+  }
+  
+  div.desc1 {
+    padding: 15px;
+    text-align: center;
+    color: #D0101F;
+    font-size: 40px;
+
+  }
+  div.desc2 {
+    padding: 15px;
+    text-align: center;
+    color: #0046A5;
+    font-size: 40px;
+
+  }
+
+  div.desc3 {
+    padding: 15px;
+    text-align: center;
+    color: #00CB46;
+    font-size: 40px;
+
+  }
+
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .responsive1 {
+    padding: 0 6px;
+    right: 50%;
+    left: 50%;
+    float: left;
+    width: 24.99999%;
+    margin-left: 70px;
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .responsive1 {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .responsive1 {
+      width: 100%;
+    }
+  }
+  
+  .clearfix1:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .txt1{
+    display: block;
+    top: 40px;
+  }
+
+    /* الزر */
+    .button {
+      right: 38%;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 300;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      color: #00c7ec;
+      border: 1px solid #00c7ec;
+      border-radius: 5px;
+      line-height: 3em;
+      padding-left: 5em;
+      padding-right: 5em;
+      box-shadow: 0 0 0 0 transparent;
+      -webkit-transition: all 0.2s ease-in;
+      -moz-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in;
+    }
+    .button:hover {
+      color: white;
+      box-shadow: 0 0 30px 0 rgba(0, 199, 236, 0.5);
+      background-color: #00c7ec;
+      -webkit-transition: all 0.2s ease-out;
+      -moz-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+    }
+    .button:hover:before {
+      -webkit-animation: shine 0.5s 0s linear;
+      -moz-animation: shine 0.5s 0s linear;
+      animation: shine 0.5s 0s linear;
+    }
+    .button:active {
+      box-shadow: 0 0 0 0 transparent;
+      -webkit-transition: box-shadow 0.2s ease-in;
+      -moz-transition: box-shadow 0.2s ease-in;
+      transition: box-shadow 0.2s ease-in;
+    }
+    .button:before {
+      content: '';
+      display: block;
+      width: 0px;
+      height: 86%;
+      position: absolute;
+      /* top: 7%; */
+      left: 0%;
+      opacity: 0;
+      background: white;
+      box-shadow: 0 0 15px 3px white;
+      -webkit-transform: skewX(-20deg);
+      -moz-transform: skewX(-20deg);
+      -ms-transform: skewX(-20deg);
+      -o-transform: skewX(-20deg);
+      transform: skewX(-20deg);
+      margin-top: 30px;
+    }
+    
+    @-webkit-keyframes shine {
+      from {
+        opacity: 0;
+        left: 0%;
+      }
+      50% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+        left: 100%;
+      }
+    }
+    @-moz-keyframes shine {
+      from {
+        opacity: 0;
+        left: 0%;
+      }
+      50% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+        left: 100%;
+      }
+    }
+    @keyframes shine {
+      from {
+        opacity: 0;
+        left: 0%;
+      }
+      50% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+        left: 100%;
+      }
+    }
+  

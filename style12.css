@@ -1,0 +1,207 @@
+html{
+  height: 1500px;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 15px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .col--inner {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    column-gap: 15px;
+  }
+  
+  .col.second {
+    display: grid;
+    grid-template-rows: 200px 200px;
+    row-gap: 15px;
+  }
+  
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+  }
+  
+  .wrapper-main {
+    height: 100%;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    cursor: pointer;
+  }
+  .image-wrapper:after {
+    content: "";
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: gray;
+    transition: opacity 150ms ease;
+  }
+  .image-wrapper:hover:after {
+    opacity: 0.5;
+  }
+
+  /* كارد طور مهاراتك */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  /* html {
+    background-color: #f0f0f0;
+  } */
+  body {
+    color: #999999;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding-bottom: 1rem;
+    /* padding: 1rem; */
+    /* text-rendering: optimizeLegibility; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "liga" on;
+  }
+  img {
+    height: auto;
+    /* max-width: 100%; */
+    vertical-align: middle;
+  }
+  .btn {
+    
+    background-color: white;
+    border: 1px solid #cccccc;
+    color: #488383;
+    padding: 0.5rem;
+    text-transform: lowercase;
+    font-size: 30px;
+  }
+  .btn--block {
+    display: block;
+    width: 100%;
+  }
+  .cards {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cards__item {
+    display: -webkit-box;
+    display: flex;
+    padding: 1rem;
+    margin-right: 100px;
+  }
+  @media (min-width: 40rem) {
+    .cards__item {
+  
+    }
+  }
+  @media (min-width: 56rem) {
+    .cards__item {
+      width: 22%;
+    }
+  }
+  .card {
+background-color: white;
+border-radius: 0.25rem;
+box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+display: -webkit-box;
+display: flex;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+flex-direction: column;
+overflow: hidden;
+  }
+  .card:hover .card__image {
+    -webkit-filter: contrast(100%);
+            filter: contrast(100%);
+  }
+  .card__content {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-flex: 1;
+            flex: 1 1 auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    padding: 1rem;
+  }
+  .card__image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 0rem;
+    border-top-right-radius: 0rem;
+  
+    /* border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem; */
+    /* -webkit-filter: contrast(70%);
+            filter: contrast(70%); */
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: -webkit-filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+    transition: -webkit-filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+    transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+    transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91), -webkit-filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  }
+  .card__image::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+  }
+  @media (min-width: 40rem) {
+    .card__image::before {
+      padding-top: 66.6%;
+    }
+  }
+  /* .card__image--flowers {
+    background-image: url();
+  } */
+  .card__image--river {
+    background-image: url(./images/f7cfc2fb09f1e89dbbec89f82c4b13de.png);
+  }
+  .card__image--record {
+    background-image: url(./images/78d59e92a3c201a615177bfcf79cad90.png);
+  }
+  .card__image--fence {
+    background-image: url(./images/839642166d6002fcd795e3399d3a1c95.png);
+  }
+  .card__title {
+    color: #7010D0;
+    font-size: 1.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  .card__text {
+    -webkit-box-flex: 1;
+     flex: 1 1 auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+   } 
+
+/* لايك */
+.fa {
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: darkblue;
+}
